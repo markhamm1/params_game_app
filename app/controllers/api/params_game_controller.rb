@@ -10,7 +10,7 @@ class Api::ParamsGameController < ApplicationController
   end
 
   def number_guessing
-    user_guess = params['number'].to_i
+    user_guess = params[:number].to_i
     correct_answer = 65
 
     if user_guess > correct_answer
@@ -23,5 +23,16 @@ class Api::ParamsGameController < ApplicationController
 
     render "number_game.json.jb"
   end
-
+  
+  def username_password
+    username = params[:username]
+    password = params[:password]
+    
+    if username == "hugh"  && password == "swordfish"
+      @message = "valid credentials!"
+    else
+      @message = "invalid credentials"
+    end
+    render "username_password.json.jb"
+  end
 end
